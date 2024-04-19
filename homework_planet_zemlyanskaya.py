@@ -1,9 +1,6 @@
 import maya.cmds as cmds
 import random
 
-#delete everything from scene
-if cmds.ls("*_main"):
-    cmds.delete(cmds.ls("*_main"))
 # exercise 2: animation for planet and moons
 def animate_moon(anim_moon_grp=None):
 
