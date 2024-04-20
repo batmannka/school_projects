@@ -52,11 +52,11 @@ def create_moon(moon_name = "moon", radius = 1, offset_distance=0):
     animate_moon(anim_moon_grp=grp_rotation)
     return grp_moon
 
-def create_planet(planet_name="Earth"):
+def create_planet(planet_name="Earth", planet_r_min = None, planet_r_max = None, moon_min = None, moon_max = None, moon_r_min = None, moon_r_max = None):
 
-    moon_count = random.randint(3,10)
+    moon_count = random.randint(moon_min,moon_max)
 
-    planet_r = random.uniform(1,6)
+    planet_r = random.uniform(planet_r_min,planet_r_max)
     planet_spot = cmds.polySphere(n=planet_name, r=planet_r)[0]
 
     grp_main = cmds.group(empty=1, name=planet_name + "_main")
@@ -80,7 +80,7 @@ def create_planet(planet_name="Earth"):
     distance_to_moon = planet_r
 
     for i in range(moon_count): 
-        moon_r = random.uniform(0.2, 0.7)
+        moon_r = random.uniform(moon_r_min, moon_r_max)
         moon_offset = distance_to_moon + moon_r + 1
 
         distance_to_moon = moon_offset + moon_r
@@ -95,5 +95,4 @@ def create_planet(planet_name="Earth"):
     
     animate_planet(anim_planet_grp=planet_spot)
 
-
-create_planet()
+create_planet(planet_name="Earth", planet_r_min = 3, planet_r_max = 6, moon_min = 2, moon_max = 7, moon_r_min = 0.4, moon_r_max = 2.0)
