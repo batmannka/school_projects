@@ -56,7 +56,7 @@ def create_moon(moon_name = "moon", radius = 1, offset_distance=0):
     animate_moon(anim_moon_grp=grp_rotation)
     return grp_moon
 
-def create_planet(planet_name="Earth", planet_r_min = 3, planet_r_max = 6, moon_min = 2, moon_max = 7, moon_r_min = 0.4, moon_r_max = 2.0.):
+def create_planet(planet_name="Earth", planet_r_min = 3, planet_r_max = 6, moon_min = 2, moon_max = 7, moon_r_min = 0.4, moon_r_max = 2.0):
 
     moon_count = random.randint(moon_min,moon_max)
 
