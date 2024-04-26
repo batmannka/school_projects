@@ -20,21 +20,19 @@ def save_value(path_to_file = None):
     curves_value = {}
 
     for crv in curves:
-            
-        use_channels = cmds.listAttr(crv, k=1, connectable=False, locked=False)
+
+        # get list of unlocked attributes    
+        use_channels = cmds.listAttr(crv, k=1, u=1)
 
         dict_channels = {}
 
-        if use_channels:
-                
-            for at in use_channels:
+        for at in use_channels:
 
-                if 'translate' in at or 'rotate' in at or 'scale' in at:
+            if 'translate' in at or 'rotate' in at or 'scale' in at:                    
+                value = cmds.getAttr(crv +'.'+ at)
+                dict_channels[at] = value
 
-                    value = cmds.getAttr(crv +'.'+ at)
-                    dict_channels[at] = value
-
-            curves_value[crv] = dict_channels
+        curves_value[crv] = dict_channels
 
     if curves_value:
 
